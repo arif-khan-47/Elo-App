@@ -8,18 +8,29 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 
 
-import Home from './HomeScreenTabs/Home'
 import Search from './HomeScreenTabs/Search';
 import Reel from './HomeScreenTabs/Reel';
 import Notification from './HomeScreenTabs/Notification';
 import UserProfile from './HomeScreenTabs/UserProfile';
+import HomeTab from './HomeScreenTabs/Home';
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
   return (
-    <Tab.Navigator initialRouteName='Reel' screenOptions={{ tabBarStyle: tw`dark:bg-black py-1 rounded-t-lg`, tabBarShowLabel: false, tabBarActiveTintColor: '#FF4D67', tabBarInactiveTintColor: 'gray', headerStyle: tw`bg-transparent dark:bg-black shadow-sm`, headerTitleStyle: tw`font-bold text-2xl`, headerTintColor: '#FF4D67', }}>
-      <Tab.Screen name="Feed" component={Home}
+    <Tab.Navigator 
+    initialRouteName='Home' 
+    screenOptions={({route })=>({ 
+      tabBarStyle: tw`dark:bg-black py-1 rounded-t-lg`, 
+      tabBarShowLabel: false, 
+      tabBarActiveTintColor: '#FF4D67', 
+      tabBarInactiveTintColor: 'gray', 
+      headerStyle: tw`bg-transparent dark:bg-black shadow-sm`, 
+      headerTitleStyle: tw`font-bold text-2xl`, 
+      headerTintColor: '#FF4D67'})}>
+
+<Tab.Screen name="Home" component={HomeTab}
         options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='home' focused={focused} size={30} color={color} /> }} />
+
       <Tab.Screen name="Search" component={Search}
         options={{ tabBarHideOnKeyboard: true, headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='search' focused={focused} size={23} color={color} /> }} />
 
@@ -30,7 +41,7 @@ function HomeScreen() {
       <Tab.Screen name="Notification" component={Notification}
         options={{ headerShown: true, tabBarIcon: ({ focused, color }) => <Ionicons name='notifications' focused={focused} size={25} color={color} />, title: 'Notifications' }} />
       <Tab.Screen name="UserProfile" component={UserProfile}
-        options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='user' focused={focused} size={25} color={color} />, tabBarLabel: 'Home' }} />
+        options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='user' focused={focused} size={25} color={color} />}} />
 
     </Tab.Navigator>
 

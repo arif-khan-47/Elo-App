@@ -18,7 +18,8 @@ import PIN from './ProfileSetup/PIN';
 import Finger from './ProfileSetup/Finger';
 import ForgetPswdHero from './ForgetPassword/ForgetPswdHero';
 import OTP from './ForgetPassword/OTP';
-import NewPswd from './ForgetPassword/NewPswd'
+import NewPswd from './ForgetPassword/NewPswd';
+
 
 
 
@@ -48,6 +49,9 @@ function Start() {
             <Stack.Screen name='ForgetPswdHero' component={ForgetPswdHero} options={{ headerShown: true, title: "Forget Password" }} />
             <Stack.Screen name='OTP' component={OTP} options={{ headerShown: true, title: "Forget Password" }} />
             <Stack.Screen name='NewPswd' component={NewPswd} options={{ headerShown: true, title: "Create New Password" }} />
+
+
+
         </Stack.Navigator>
     )
 }

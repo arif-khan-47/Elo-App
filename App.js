@@ -7,6 +7,8 @@ import tw from 'twrnc'
 
 //Screens
 import Start from './src/screen/Start';
+import StatusView from './src/components/Home/StatusView' 
+
 import HomeScreen from './src/screen/HomeScreen';
 
 const Stack = createStackNavigator();
@@ -17,6 +19,7 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName='HomeScreen' screenOptions={{headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl`}}>
           <Stack.Screen name='Start' component={Start} options={{ headerShown: false }} />
+          <Stack.Screen name='Status' component={StatusView} options={{ headerShown: false, title: "Story" }} />
           <Stack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>

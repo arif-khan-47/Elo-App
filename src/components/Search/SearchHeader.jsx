@@ -1,24 +1,18 @@
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import tw from 'twrnc'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
 
 const SearchHeader = () => {
   return (
-    <View style={tw`bg-gray-200 mx-5 my-1 flex-row rounded-lg border-gray-300 border`}>
-    <Image
-        style={tw`w-5 h-5 mx-2 my-auto`}
-        source={{
-            uri: 'https://img.icons8.com/ios-glyphs/90/FF4D67/search--v1.png',
-        }}
-    />
-    <TextInput
-        style={tw`w-full`}
+    <View style={{ justifyContent: 'center', alignItems: 'center', width: '100%', paddingVertical: 10, position: 'relative' }}>
+      <Ionicons name='search' style={{ fontSize: 18, opacity: 0.7, position: 'absolute', zIndex: 1, left: 25 }} />
+      <TextInput style={{ width: '94%', backgroundColor: '#EBEBEB', borderRadius: 10, alignItems: 'center', justifyContent: 'center', fontSize: 15, padding: 4, paddingLeft: 40 }}
         placeholder="Search"
-    // style={styles.input}
-    // onChangeText={setPassword}
-    // value={password}
-    />
-</View>
+        placeholderTextColor={'rgba(255,77,103,0.5)'}
+      />
+    </View>
   )
 }
 

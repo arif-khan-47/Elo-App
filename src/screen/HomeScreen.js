@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 function HomeScreen() {
   return (
     <Tab.Navigator 
-    initialRouteName='Home' 
+    initialRouteName='Notification' 
     screenOptions={({route })=>({ 
       tabBarStyle: tw`dark:bg-black py-1 rounded-t-lg`, 
       tabBarShowLabel: false, 

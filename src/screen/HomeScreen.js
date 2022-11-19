@@ -29,7 +29,7 @@ function HomeScreen() {
       headerTintColor: '#FF4D67'})}>
 
 <Tab.Screen name="Home" component={HomeTab}
-        options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='home' focused={focused} size={30} color={color} /> }} />
+        options={{ headerShown: false, tabBarHideOnKeyboard:true,  tabBarIcon: ({ focused, color }) => <FontAwesome name='home' focused={focused} size={30} color={color} />,}} />
 
       <Tab.Screen name="Search" component={Search}
         options={{ tabBarHideOnKeyboard: true, headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='search' focused={focused} size={23} color={color} /> }} />

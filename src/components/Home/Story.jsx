@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native'
 const Story = () => {
     const navigation = useNavigation()
     return (
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingVertical: 20, paddingHorizontal: 15 }}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ paddingVertical: 20, paddingHorizontal: 15, borderBottomColor:'rgba(255,77,103,0.4)', borderBottomWidth:0.3,}}>
             {
                 StoriesData.map((data, index) => {
                     return (

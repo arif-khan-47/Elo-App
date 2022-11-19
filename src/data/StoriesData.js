@@ -14,7 +14,7 @@ export default[
     },  
     {
         id:'2',
-        avatar:'https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png',
+        avatar: 'https://res.cloudinary.com/drtldr4nl/image/upload/v1664867887/m20/Olivia_tohbxw.jpg',
         username:'khan',
         caption:'this is caption of video 2',
         video:'https://res.cloudinary.com/drtldr4nl/video/upload/v1668515016/ELO/VID-20210817-WA0003_erlauz.mp4',
@@ -27,7 +27,7 @@ export default[
     },  
     {
         id:'3',
-        avatar:'https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png',
+        avatar:'https://res.cloudinary.com/drtldr4nl/image/upload/v1664867768/m20/Jake_jcht1n.jpg',
         username:'arif',
         caption:'this is caption of video 3',
         video:'https://res.cloudinary.com/drtldr4nl/video/upload/v1668515016/ELO/VID-20210817-WA0003_erlauz.mp4',
@@ -40,7 +40,7 @@ export default[
     },  
     {
         id:'4',
-        avatar:'https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png',
+        avatar:'https://res.cloudinary.com/drtldr4nl/image/upload/v1664867856/m20/Natalie_imt532.jpg',
         username:'arif',
         caption:'this is caption of video 3',
         video:'https://res.cloudinary.com/drtldr4nl/video/upload/v1668515016/ELO/VID-20210817-WA0003_erlauz.mp4',

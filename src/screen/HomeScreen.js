@@ -39,7 +39,7 @@ function HomeScreen() {
         options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <Entypo name='clapperboard' focused={focused} size={23} color={color} /> }} />
 
       <Tab.Screen name="Notification" component={Notification}
-        options={{ headerShown: true, tabBarIcon: ({ focused, color }) => <Ionicons name='notifications' focused={focused} size={25} color={color} />, title: 'Notifications' }} />
+        options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <Ionicons name='notifications' focused={focused} size={25} color={color} />, title: 'Notifications' }} />
       <Tab.Screen name="UserProfile" component={UserProfile}
         options={{ headerShown: false, tabBarIcon: ({ focused, color }) => <FontAwesome name='user' focused={focused} size={25} color={color} />}} />
 

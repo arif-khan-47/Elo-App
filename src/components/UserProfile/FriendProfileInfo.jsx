@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import Feather from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native';
 
 const FriendProfileInfo = ({ username, avatar, isfollow, follower, following }) => {
   return (
@@ -13,7 +14,7 @@ const FriendProfileInfo = ({ username, avatar, isfollow, follower, following }) 
                 source={{ uri: avatar }}
                 style={{
                   resizeMode: 'cover',
-                  backgroundColor: '#FF4D67',
+                  backgroundColor: 'black',
                   width: 80,
                   height: 80,
                   borderRadius: 100,
@@ -47,12 +48,24 @@ export default FriendProfileInfo
 
 
 
-export const ProfileButtons = ({ id }) => {
+export const ProfileButtons = ({ id, username, avatar }) => {
   const [follow, setFollow] = useState(follow)
+  const navigation = useNavigation()
   return (
     <>
       {
-        id === 0 ? null : (
+        id === 0 ? (
+          <View style={{width:'100%', flexDirection:'row', alignItems:'center', justifyContent:'space-evenly', paddingVertical:5}}>
+            <TouchableOpacity style={{width:'80%'}} onPress={()=>navigation.navigate("EditProfile",{username:username, avatar:avatar})}>
+            <View style={{width:'100%', height:35, borderWidth:1,justifyContent:'center', borderRadius:5, borderColor:'#FF4D67', alignItems:'center'}}>
+              <Text style={{fontSize:14, letterSpacing:1, opacity:0.8, color:'#FF4D67'}}>
+                Edit profile
+              </Text>
+            </View>
+            </TouchableOpacity>
+          </View>
+
+        ) : (
           <View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
             <TouchableOpacity onPress={() => setFollow(!follow)} style={{ width: '42%' }}>
               <View style={{ width: '100%', height: 35, borderRadius: 5, backgroundColor: follow ? 'white' : '#FF4D67', borderWidth: follow ? 1 : 0, borderColor: '#FF4D67', justifyContent: 'center', alignItems: 'center' }}>

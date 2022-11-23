@@ -10,6 +10,7 @@ import Start from './src/screen/Start';
 import StatusView from './src/components/Home/StatusView'
 import HomeScreen from './src/screen/HomeScreen';
 import FriendProfile from './src/screen/FriendsPage/FriendProfile';
+import EditProfile from './src/screen/FriendsPage/EditProfile';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ function App() {
           <Stack.Screen name='Start' component={Start} options={{ headerShown: false }} />
           <Stack.Screen name='Status' component={StatusView} options={{ headerShown: false, title: "Story" }} />
           <Stack.Screen name='FriendProfile' component={FriendProfile} options={{ headerShown: false }} />
+          <Stack.Screen name='EditProfile' component={EditProfile} options={{ headerShown: false }} />
           <Stack.Screen name='HomeScreen' component={HomeScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import tw from 'twrnc'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,27 +9,44 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import PostGrid from '../../components/UserProfile/PostGrid'
 import ReelGrid from '../../components/UserProfile/ReelGrid'
 import { scale } from 'react-native-size-matters';
-
+import Profile, { ProfileButtons } from '../../components/UserProfile/FriendProfileInfo';
+import ReadMore from '@fawazahmed/react-native-read-more';
 const Tab = createMaterialTopTabNavigator();
 
 const UserProfile = () => {
   return (
-    <SafeAreaView style={[{ flex: 1 }, tw`relative`]}>
-      <View style={[{ flex: 0.1 }, tw``]}>
-        <ProfileHeader />
+    <>
+      <View style={{ width: '100%', height: '100%', backgroundColor: 'white' }}>
+        <View style={{ paddingVertical: 12 }}>
+          <ProfileHeader username='username' />
+        </View>
         <View style={tw`h-[1px] bg-gray-200`}></View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{ width: '100%' }}>
+            <Profile
+              username='arif_khan'
+              avatar='https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png'
+              follower={98}
+              following={78}
+            />
+          </View>
+          <ProfileButtons id={0} username='arif_khan' avatar='https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png'/>
+          {/* <View style={{ marginTop: -15, paddingHorizontal: 10 }}>
+            <ReadMore>
+              This is Bio hsgyigsi cbidhckdhc hcbdhfcuihi huidhuihdui hhduhuidhviul jbvjidbvi cdklcnd djvjod vjdovjo vjvjfv vjljvd dk cjdv dkvkvjv vk jjc jkjck; jijvfjvifjvifvjfiovjfipv fjiv jfvofj j cjoj coj vuv ivjfkvjifv fjvifuvfiv jk iv
+            </ReadMore>
+          </View>
+          <View style={{ justifyContent: 'center', width: '100%', alignItems: 'center', marginVertical: 8 }}>
+            <TouchableOpacity style={{ width: '80%', borderWidth: 0.5, borderColor: '#FF4D67', alignItems: 'center', paddingVertical: 10, borderRadius: 5 }}>
+              <Text style={{ color: '#FF4D67' }}>
+                Edit Profile
+              </Text>
+            </TouchableOpacity>
+          </View> */}
+        </ScrollView>
       </View>
-      
-      <ScrollView style={{ flex: 0.9 }}>
-        <ProfileInfo />
-        <View style={[tw`h-[1px] bg-gray-300`]}></View>
-          <Tab.Navigator style={[ tw``, {flex:1}]} screenOptions={{swipeEnabled: true, tabBarActiveTintColor: '#FF4D67', tabBarInactiveTintColor:'grasy', tabBarShowLabel:false, tabBarPressColor:'#FF4D67',tabBarStyle:tw`shadow-none bg-gray-100`,tabBarIndicatorStyle:tw`bg-[#FF4D67]`}}>
-          <Tab.Screen name="Grid" component={PostGrid} options={{ tabBarIcon: ({ focused, color }) => <MaterialCommunityIcons name='grid' focused={focused} size={25} color={color} /> }} />
-          <Tab.Screen name="Reels" component={ReelGrid} options={{ tabBarIcon: ({ focused, color }) => <MaterialIcons name='video-library' focused={focused} size={25} color={color} /> }}/>
-        </Tab.Navigator>
-        <Text>gdhjbklhf;h</Text>
-      </ScrollView>
-    </SafeAreaView>
+    </>
+
   )
 }
 

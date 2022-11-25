@@ -2,10 +2,10 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import tw from 'twrnc'
 
-const ProfileHeader = (props) => {
+const ProfileHeader = ({username, onPress}) => {
     return (
         <View style={tw`my-auto flex-row justify-between mx-5`}>
-            <View><Text style={tw`text-2xl text-[#FF4D67]`}>{props.username}</Text></View>
+            <View><Text style={tw`text-2xl text-[#FF4D67]`}>{username}</Text></View>
             <View style={tw`flex-row`}>
                 <TouchableOpacity onPress={() => {console.log('Add Post Button Clicked')}}>
                 <Image
@@ -15,7 +15,7 @@ const ProfileHeader = (props) => {
                         }}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {console.log('Menu Button Clicked')}}>
+                <TouchableOpacity onPress={onPress}>
                 <Image
                         style={tw`w-8 h-8 mx-2 my-auto`}
                         source={{

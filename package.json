@@ -1,5 +1,5 @@
 {
-  "name": "Elo",
+  "name": "elo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,10 +19,13 @@
     "@react-navigation/stack": "^6.3.4",
     "@rneui/base": "^0.0.0-edge.2",
     "@rneui/themed": "^0.0.0-edge.2",
+    "axios": "^1.2.0",
     "react": "18.1.0",
     "react-hot-toast": "^2.4.0",
     "react-native": "0.70.4",
     "react-native-date-picker": "^4.2.6",
+    "react-native-dotenv": "^3.4.2",
+    "react-native-flash-message": "^0.3.1",
     "react-native-gesture-handler": "^2.8.0",
     "react-native-pager-view": "^6.1.0",
     "react-native-popup-dialog": "^0.18.3",
@@ -33,7 +36,6 @@
     "react-native-swiper-flatlist": "^3.0.17",
     "react-native-tab-view": "^3.3.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-vector-image": "^0.3.3",
     "react-native-video": "^5.2.1",
     "twrnc": "^3.4.1"
   },

@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 function Start() {
     return (
 
-        <Stack.Navigator initialRouteName='Splash' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
+        <Stack.Navigator initialRouteName='Interest' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
             {/* Completed */}
             <Stack.Screen name='Splash' component={Introduction} options={{ headerShown: false }} />
             <Stack.Screen name='Onboardings' component={Onboarding} options={{ headerShown: false }} />

@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='HomeScreen' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
+        <Stack.Navigator initialRouteName='Start' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
           <Stack.Screen name='Start' component={Start} options={{ headerShown: false }} />
           <Stack.Screen name='Status' component={StatusView} options={{ headerShown: false, title: "Story" }} />
           <Stack.Screen name='FriendProfile' component={FriendProfile} options={{ headerShown: false }} />

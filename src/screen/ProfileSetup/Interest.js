@@ -16,8 +16,7 @@ const Interest = ({ navigation }) => {
                 <InterestMenu />
             </ScrollView>
             <View style={{ flex: 0.17 }}>
-                {/* <NextSkipButton skipTo='Gender' nextTo='Gender'/> */}
-                <View style={[styles.container, tw`my-auto flex-row`]}>
+                {/* <View style={[styles.container, tw`my-auto flex-row`]}>
                     <TouchableOpacity onPress={() => navigation.navigate('Gender')}>
                         <View style={[tw`bg-[#FFEDF0] py-5 px-15 rounded-full`]}>
                             <Text style={tw`text-[#FF4D67]`}>Skip</Text>
@@ -29,7 +28,12 @@ const Interest = ({ navigation }) => {
                             <Text style={tw`text-white`}>Continue</Text>
                         </View>
                     </TouchableOpacity>
-                </View>
+                </View> */}
+                <TouchableOpacity onPress={() => navigation.navigate('Gender')} style={[styles.container, tw`my-auto`]}>
+                    <View style={tw`bg-[#FF4D67] mx-4 my-5 rounded-full h-12`}>
+                        <Text style={tw`text-white mx-auto my-auto text-lg font-semibold`}>Next</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         </View>
     )

@@ -7,10 +7,13 @@ import tw from 'twrnc'
 
 //Screens
 import Start from './src/screen/Start';
+import Introduction from './src/screen/introduction/Introduction';
 import StatusView from './src/components/Home/StatusView'
 import HomeScreen from './src/screen/HomeScreen';
 import FriendProfile from './src/screen/FriendsPage/FriendProfile';
 import EditProfile from './src/screen/FriendsPage/EditProfile';
+import Onboarding from './src/screen/introduction/Onboarding';
+import LoginHero from './src/screen/Login/LoginHero';
 
 const Stack = createStackNavigator();
 
@@ -18,8 +21,20 @@ function App() {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Start' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
-          <Stack.Screen name='Start' component={Start} options={{ headerShown: false }} />
+        <Stack.Navigator initialRouteName='Onboardings' screenOptions={{ headerStyle: tw`bg-transparent dark:bg-black shadow-none`, headerTitleStyle: tw`font-bold text-2xl` }}>
+          {/* <Stack.Screen name='Start' component={Start} options={{ headerShown: false }} /> */}
+
+          {/* Splash Screen  */}
+          <Stack.Screen name='Splash' component={Introduction} options={{ headerShown: false }} />
+
+          {/* Onboarding screen  */}
+          <Stack.Screen name='Onboardings' component={Onboarding} options={{ headerShown: false }} />
+          
+           {/*Login and sign up pages*/}
+           <Stack.Screen name='LoginHero' component={LoginHero} options={{ headerShown: false }} />
+
+
+
           <Stack.Screen name='Status' component={StatusView} options={{ headerShown: false, title: "Story" }} />
           <Stack.Screen name='FriendProfile' component={FriendProfile} options={{ headerShown: false }} />
           <Stack.Screen name='EditProfile' component={EditProfile} options={{ headerShown: false }} />

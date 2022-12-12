@@ -11,7 +11,7 @@ const InterestMenu = () => {
     console.log(selectedInterest)
 
     useEffect(() => {
-        axios.get(`http://192.168.1.15:5000/interest`).then(res => {
+        axios.get(`http://192.168.1.1:5000/interest`).then(res => {
             // console.log(res.data.interest)
             setData(res.data.interest)
         }).catch(error => console.log(error))

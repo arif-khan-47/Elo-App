@@ -6,7 +6,8 @@ import tw from 'twrnc'
 import { register } from '../../http/index';
 import FlashMessage from "react-native-flash-message";
 import { showMessage, hideMessage } from "react-native-flash-message";
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // https://www.youtube.com/watch?v=vfHekEsxgRk&ab_channel=CharismaKurniawanAji
 
@@ -80,11 +81,17 @@ const SignIn = ({ navigation }) => {
                 message: checkPassword,
                 type: "danger",
             });
-                }
+        }
         try {
 
             const response = await register({ email, password });
-            // console.log(response.data.message)
+            await AsyncStorage.setItem('token', response.data.token)
+            try {
+                // alert("done")
+            } catch (e) {
+                // alert(e)
+            }
+            // console.log(response.data.token)
             showMessage({
                 message: response.data.message,
                 type: "success",
@@ -176,7 +183,7 @@ const SignIn = ({ navigation }) => {
             </View> */}
 
 
-            <View style={{paddingVertical:10}}>
+            <View style={{ paddingVertical: 10 }}>
                 {
                     email == '' || password == '' || valEmail == true ?
                         <TouchableOpacity disabled onPress={signIn}>

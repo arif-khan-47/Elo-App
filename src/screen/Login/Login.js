@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Image, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { scale, } from 'react-native-size-matters';
 import React, { useState } from 'react';
 import FlashMessage from "react-native-flash-message";
@@ -6,7 +6,10 @@ import { showMessage, hideMessage } from "react-native-flash-message";
 import { login } from '../../http/index';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Checkbox } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import tw from 'twrnc'
+import { useDispatch } from 'react-redux'
+import { checkLogin } from '../../store/authReducer';
 
 
 const LogIn = ({ navigation }) => {
@@ -16,6 +19,7 @@ const LogIn = ({ navigation }) => {
     const [valEmail, setValEmail] = useState(false);
     const [seePassword, setSeePassword] = useState(true);
 
+    const dispatch = useDispatch()
 
     const emailValidations = (newEmail) => {
         let re = /\S+@\S+\.\S+/;
@@ -71,34 +75,46 @@ const LogIn = ({ navigation }) => {
 
         const checkPassword = checkPasswordValidity(password)
         if (!checkPassword) {
-            console.log('Password Validation secceed')
+            // console.log('Password Validation secceed')
         } else {
             return showMessage({
                 message: checkPassword,
                 type: "danger",
             });
-                }
+        }
         try {
 
             const response = await login({ email, password });
-            // console.log(response.data.message)
-            showMessage({
-                message: response.data.message,
-                type: "success",
-            });
-            navigation.navigate('HomeScreen')
+            // console.log(response.data)
+            await AsyncStorage.setItem('token', response.data.token)
+            try {
+                // alert(response.data.token)
+            } catch (e) {
+                alert(e)
+            }
+            // dispatch({ type: "login" })
+            dispatch(checkLogin())
+
+
+            // showMessage({
+            //     message: response.data.message,
+            //     type: "success",
+            // });
+            // navigation.navigate('HomeScreen')
+            // navigation.navigate('HomeStack')
+
 
 
         } catch (error) {
-            // console.log(error.response.data)
+            // console.log(error.response.data.message)
             showMessage({
-                message: error.response.data.error,
+                message: error.response.data.message,
                 type: "danger",
             });
         }
 
     }
- 
+
 
 
 
@@ -163,11 +179,27 @@ const LogIn = ({ navigation }) => {
                 />
                 <Text style={tw`my-auto`}>Remember me</Text>
             </View> */}
-            <TouchableOpacity onPress={logIn}>
+            {/* <TouchableOpacity onPress={logIn}>
                 <View style={tw`bg-[#FF4D67] mx-5 rounded-full h-12 mt-5`}>
                     <Text style={tw`text-white mx-auto my-auto`}>Login</Text>
                 </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <View style={{ paddingVertical: 10 }}>
+                {
+                    email == '' || password == '' || valEmail == true ?
+                        <TouchableOpacity disabled onPress={logIn}>
+                            <View style={tw`bg-gray-300 mx-5 rounded-full h-12`}>
+                                <Text style={tw`text-white mx-auto my-auto`}>Login</Text>
+                            </View>
+                        </TouchableOpacity> :
+                        <TouchableOpacity onPress={logIn}>
+                            <View style={tw`bg-[#FF4D67] mx-5 rounded-full h-12`}>
+                                <Text style={tw`text-white mx-auto my-auto`}>Login</Text>
+                            </View>
+                        </TouchableOpacity>
+                }
+
+            </View>
 
 
             <TouchableOpacity onPress={() => navigation.navigate('ForgetPswdHero')}>

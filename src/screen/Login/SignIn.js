@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, Image, StyleSheet, ToastAndroid, Button } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { scale, } from 'react-native-size-matters';
 import React, { useState } from 'react';
 import { Checkbox } from 'react-native-paper';
@@ -87,9 +87,9 @@ const SignIn = ({ navigation }) => {
             const response = await register({ email, password });
             await AsyncStorage.setItem('token', response.data.token)
             try {
-                // alert("done")
+                // console.log(response.data.token)
             } catch (e) {
-                // alert(e)
+                alert(e)
             }
             // console.log(response.data.token)
             showMessage({
@@ -102,7 +102,7 @@ const SignIn = ({ navigation }) => {
         } catch (error) {
             // console.log(error.response.data)
             showMessage({
-                message: error.response.data.error,
+                message: error.response.data.message,
                 type: "danger",
             });
         }

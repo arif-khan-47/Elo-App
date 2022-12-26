@@ -2,7 +2,8 @@ import axios from "axios";
 
 const API = axios.create({
     // baseURL : process.env.REACT_APP_BASEURL,
-    baseURL: 'http://192.168.1.12:5000',
+    baseURL: 'http://192.168.1.15:5000',
+
 
     // withCredentials: true,
     headers: {
@@ -15,11 +16,17 @@ const API = axios.create({
     }
 });
 
-const getAPI = axios.get('http://192.168.1.18:5000');
+// const GETAPI = axios.get('http://192.168.1.6:5000');
+// const GETAPI = axios.create({
+//     baseURL: 'http://192.168.1.16:5000',
+//     timeout: 1000,
+//     headers: { 'X-Custom-Header': 'foobar' }
+// });
 
 
-export const register = (data) => API.post("/auth/register", data);
-export const login = (data) => API.post("/auth/login", data);
-export const interest = () => getAPI.get("/interest");
+export const register = (data) => API.post("/api/v1/register", data);
+export const login = (data) => API.post("/api/v1/login", data);
+export const interest = ( ) => API.get("/api/v1/interest");
+export const editProfile = (data) => API.put("/api/v1", data)
 
 export default API;

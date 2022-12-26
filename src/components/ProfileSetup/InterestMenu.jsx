@@ -1,7 +1,9 @@
 import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import tw from 'twrnc'
-import axios from 'axios'
+import { interest } from '../../http'
+
+
 
 const InterestMenu = () => {
     const [data, setData] = useState([])
@@ -10,12 +12,19 @@ const InterestMenu = () => {
     })
     console.log(selectedInterest)
 
+
+    const getAllintersts = async () => {
+        try {
+            const response = await interest()
+            // console.log(response.data)
+            setData(response.data.interest)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     useEffect(() => {
-        axios.get(`http://192.168.1.1:5000/interest`).then(res => {
-            // console.log(res.data.interest)
-            setData(res.data.interest)
-        }).catch(error => console.log(error))
-    }, []);
+        getAllintersts()
+    }, [])
 
 
     const onSelect = (i, selected) => {
@@ -32,31 +41,31 @@ const InterestMenu = () => {
 
 
     return (
-            <FlatList
-                data={data}
-                contentContainerStyle={[{
-                    justifyContent: 'flex-start',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                }, tw`mx-5`]}
+        <FlatList
+            data={data}
+            contentContainerStyle={[{
+                justifyContent: 'flex-start',
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+            }, tw`mx-5`]}
 
-                renderItem={({ item, index }) => {
-                    console.log(item)
-                    return (
+            renderItem={({ item, index }) => {
+                console.log(item)
+                return (
 
-                        <TouchableOpacity key={index} onPress={() => onSelect(index, item.selected ? false : true)}>
-                            <View style={[tw`border-[#FF4D67] my-2 border-2 mx-1 px-2 rounded-full`, { backgroundColor: item.selected ? '#FF4D67' : null }
-                            ]}>
-                                <Text style={[tw`mx-auto p-2 my-auto font-semibold`,
-                                { color: item.selected ? 'white' : '#FF4D67' }
-                                ]}>{item.title}
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
-                    )
-                }}
+                    <TouchableOpacity key={index} onPress={() => onSelect(index, item.selected ? false : true)}>
+                        <View style={[tw`border-[#FF4D67] my-2 border-2 mx-1 px-2 rounded-full`, { backgroundColor: item.selected ? '#FF4D67' : null }
+                        ]}>
+                            <Text style={[tw`mx-auto p-2 my-auto font-semibold`,
+                            { color: item.selected ? 'white' : '#FF4D67' }
+                            ]}>{item.title}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+                )
+            }}
 
-            />
+        />
 
     )
 }

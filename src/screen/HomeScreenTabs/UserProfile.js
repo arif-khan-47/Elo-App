@@ -1,17 +1,22 @@
-import { Pressable, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import React, { useCallback, useMemo, useRef } from 'react';
 import tw from 'twrnc'
 import ProfileHeader from '../../components/UserProfile/ProfileHeader';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Profile, { ProfileButtons } from '../../components/UserProfile/FriendProfileInfo';
 import Entypo from 'react-native-vector-icons/Entypo';
 import ContentTabs from '../../components/UserProfile/ContentTabs';
-import {BottomSheetModal, BottomSheetModalProvider,} from '@gorhom/bottom-sheet';
+import { BottomSheetModal, BottomSheetModalProvider, } from '@gorhom/bottom-sheet';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../store/authReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+
 
 
 const UserProfile = () => {
 
+  const dispatch = useDispatch()
 
   const bottomSheetModalRef = useRef(null);
 
@@ -25,7 +30,21 @@ const UserProfile = () => {
   const handleSheetChanges = useCallback((index) => {
     console.log('handleSheetChanges', index);
   }, []);
+  //logout function
+  const loggingOut = async () => {
+    try {
+      const value = await AsyncStorage.removeItem('token')
+      console.log(value)
+      if (!value) {
+        dispatch(logout())
+          console.log('remove')
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
 
+  };
 
 
 
@@ -65,7 +84,7 @@ const UserProfile = () => {
               avatar='https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png'
               follower={98}
               following={78}
-              
+
             />
           </View>
           <ProfileButtons id={0} username='arif_khan' avatar='https://img.icons8.com/fluency-systems-filled/144/FF4D67/guest-male.png' />
@@ -82,19 +101,25 @@ const UserProfile = () => {
             index={1}
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
-            // enableOverDrag
-            // enableHandlePanningGesture
->
-            <Pressable style={{width:'100%', height:50, justifyContent:'center', alignItems:'center'}} android_ripple={{color:'gray'}}>
-              <View style={{width:'90%', height:45, flexDirection:'row', alignItems:'center'}}>
-                <Ionicons name='ios-settings-sharp' size={30}  color={'#FF4D67'}/>
-                <Text style={[{fontSize:25, paddingLeft:5, color:'#FF4D67'}]}>settings</Text>
+          // enableOverDrag
+          // enableHandlePanningGesture
+          >
+            <Pressable style={{ width: '100%', height: 50, justifyContent: 'center', alignItems: 'center' }} android_ripple={{ color: 'gray' }}>
+              <View style={{ width: '90%', height: 45, flexDirection: 'row', alignItems: 'center' }}>
+                <Ionicons name='ios-settings-sharp' size={30} color={'#FF4D67'} />
+                <Text style={[{ fontSize: 25, paddingLeft: 5, color: '#FF4D67' }]}>settings</Text>
               </View>
             </Pressable>
-            <Pressable style={{width:'100%', height:50, justifyContent:'center', alignItems:'center'}} android_ripple={{color:'gray'}}>
-              <View style={{width:'90%', height:45, flexDirection:'row', alignItems:'center'}}>
-                <Ionicons name='bookmark' size={30}  color={'#FF4D67'}/>
-                <Text style={[{fontSize:25, paddingLeft:5, color:'#FF4D67'}]}>Saved</Text>
+            <Pressable style={{ width: '100%', height: 50, justifyContent: 'center', alignItems: 'center' }} android_ripple={{ color: 'gray' }}>
+              <View style={{ width: '90%', height: 45, flexDirection: 'row', alignItems: 'center' }}>
+                <Ionicons name='bookmark' size={30} color={'#FF4D67'} />
+                <Text style={[{ fontSize: 25, paddingLeft: 5, color: '#FF4D67' }]}>Saved</Text>
+              </View>
+            </Pressable>
+            <Pressable style={{ width: '100%', height: 50, justifyContent: 'center', alignItems: 'center' }} android_ripple={{ color: 'gray' }} onPress={loggingOut}>
+              <View style={{ width: '90%', height: 45, flexDirection: 'row', alignItems: 'center' }}>
+                <Ionicons name='log-out-outline' size={30} color={'#FF4D67'} />
+                <Text style={[{ fontSize: 25, paddingLeft: 5, color: '#FF4D67' }]}>Logout</Text>
               </View>
             </Pressable>
             {/* <Pressable style={{width:'100%', height:50, justifyContent:'center', alignItems:'center'}} android_ripple={{color:'gray'}}>
